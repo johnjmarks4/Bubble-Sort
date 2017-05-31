@@ -1,29 +1,27 @@
-def bubble_sort_by(arr)
+def bubble_sort_by(ary)
   i = 1
-  first_arr = 0
-  second_arr = 1
+  first_ary = 0
+  second_ary = 1
   first_container = []
   second_container = []
-  passes = arr.length - 1
+  passes = ary.length - 1
     (passes - 1).times do
       passes.times do
-        value = yield(arr[first_arr],arr[second_arr])
-        first_arr += 1 
-        second_arr += 1
+        value = yield(ary[first_ary],ary[second_ary])
+        first_ary += 1 
+        second_ary += 1
         if value > 0
-          first_container = arr[i]
-          second_container = arr[i - 1]
-          arr[i - 1] = first_container
-          arr[i] = second_container
+          first_container = ary[i]
+          second_container = ary[i - 1]
+          ary[i - 1] = first_container
+          ary[i] = second_container
         end
         i += 1
       end
       i = 1
     end
-  return arr
+  return ary
 end
 
 #example:
-#bubble_sort_by(["hi","hello","hey"]) do |left,right|
-  #left.length - right.length
-#end
+print bubble_sort_by(["hi","hello","hey"]) { |left,right| left.length - right.length }
